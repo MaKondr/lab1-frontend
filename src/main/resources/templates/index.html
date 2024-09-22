@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab-1</title>
+
+    <style>
+        textarea{
+            width: 50%;
+            height: 100%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+        }
+        textarea.output{
+            height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <form th:action="@{/}" name="message" th:method="post">
+        <label>
+            <textarea name="message" placeholder="Введите сообщение"></textarea>
+        </label>
+        <br/>
+        <button type="submit">Отправить</button>
+    </form>
+    <br/>
+    <label>
+        <textarea class="output" th:text="${text}" placeholder="Здесь будет ответ" readonly></textarea>
+    </label>
+    <form th:action="@{/getText}" th:method="post">
+        <button type="submit">Получить сообщения</button>
+    </form>
+</div>
+</body>
+</html>
