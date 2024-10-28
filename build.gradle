@@ -13,7 +13,14 @@ java {
 	}
 }
 
+jar{
+	manifest {
+		attributes 'Main-Class':'makondr.lab_1.frontend.frontend.FrontendApplication'
+	}
+}
+
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 

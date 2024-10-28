@@ -23,6 +23,8 @@ import java.util.stream.StreamSupport;
 @RequestMapping("/")
 public class MainController {
 
+    public static String apiUrl = System.getenv("API_URL");
+
     @GetMapping
     public String index() {
         return "index";
@@ -44,7 +46,7 @@ public class MainController {
     private static String getHttpRequest() {
         HttpClient client = HttpClient.newHttpClient();
 
-        HttpRequest request = HttpRequest.newBuilder(URI.create("http://localhost:8081/api/v2"))
+        HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl))
                 .GET()
                 .build();
 
@@ -69,7 +71,7 @@ public class MainController {
     private static void postHttpRequest(String message) {
         HttpClient client = HttpClient.newHttpClient();
 
-        HttpRequest request = HttpRequest.newBuilder(URI.create("http://localhost:8081/api/v2"))
+        HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(convertToJson(message)))
                 .build();
